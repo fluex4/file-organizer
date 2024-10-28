@@ -1,0 +1,10 @@
+PyPDF2
+PyMuPDF
+python-docx
+python-pptx
+joblib
+pandas
+nltk
+scikit-learn
+wordcloud
+matplotlib
