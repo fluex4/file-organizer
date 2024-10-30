@@ -49,10 +49,14 @@ File Organizer uses a number of packages to work properly:
 It requires [Python](https://www.python.org/) v3+ to run.
 
 ##### 1. Clone this repo.
-``` git clone "https://github.com/fluex4/file-organizer.git" ```
+```bash
+git clone "https://github.com/fluex4/file-organizer.git"
+ ```
 
-##### 2.Install the dependencies.
-```pip install -r requirements.txt```
+##### 2.Install the dependencies. (this requires internet)
+```bash
+pip install -r requirements.txt
+```
 
 ##### 3. Run the `install.bat`
 it creates a folder in the user directory, consisting of all the necessary files.
