@@ -49,7 +49,7 @@ class SortFiles:
 
     def log_change(self, original_path, new_directory):
 
-        with open(self.log_file_path, "a",, encoding="utf-8") as log_file:
+        with open(self.log_file_path, "a", encoding="utf-8") as log_file:
             log_file.write(f"'{original_path}' - '{new_directory}'\n")
             print(f"'{original_path}' - '{new_directory}'")
 
