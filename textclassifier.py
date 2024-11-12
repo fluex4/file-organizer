@@ -61,6 +61,12 @@ class TextFileClassifier:
             return self.read_ppt(file_path)
         elif file_path.endswith('.txt'):
             return self.read_txt(file_path)
+        elif file_path.endswith('.py'):
+            return self.read_txt(file_path)
+        elif file_path.endswith('.js'):
+            return self.read_txt(file_path)
+        elif file_path.endswith('.c'):
+            return self.read_txt(file_path)
         else:
             print(f"Unsupported file type for {file_path}")
             return None
@@ -107,18 +113,21 @@ class TextFileClassifier:
             return
 
         for filename in os.listdir(folder_path):
-            file_path = os.path.join(folder_path, filename)
-            file_content = self.read_text_from_file(file_path)
-            if file_content:
-                predicted_category = self.predict_category(file_content)
-                category_folder = os.path.join(folder_path, predicted_category)
-                if not os.path.exists(category_folder):
-                    os.makedirs(category_folder)
-                destination_path = os.path.join(category_folder, filename)
-                shutil.move(file_path, destination_path)
-                self.log_movement(file_path, destination_path)
-            else:
-                print(f"Skipping unsupported file type for {filename}")
+            try:
+                file_path = os.path.join(folder_path, filename)
+                file_content = self.read_text_from_file(file_path)
+                if file_content:
+                    predicted_category = self.predict_category(file_content)
+                    category_folder = os.path.join(folder_path, predicted_category)
+                    if not os.path.exists(category_folder):
+                        os.makedirs(category_folder)
+                    destination_path = os.path.join(category_folder, filename)
+                    shutil.move(file_path, destination_path)
+                    self.log_movement(file_path, destination_path)
+                else:
+                    print(f"Skipping unsupported file type for {filename}")
+            except:
+                continue
 
     def log_movement(self, original_path, new_path):
         with open(self.log_path, "a") as log_file:
